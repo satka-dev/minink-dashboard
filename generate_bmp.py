@@ -1,5 +1,6 @@
 import os
 import io
+import base64
 import requests
 from PIL import Image, ImageDraw, ImageFont
 
