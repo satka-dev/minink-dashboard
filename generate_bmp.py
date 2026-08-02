@@ -28,15 +28,26 @@ def fetch_weather():
     return "Météo indisponible"
 
 def fetch_google_chart():
-    """Télécharge le graphique depuis Google Apps Script"""
+    """Télécharge le graphique depuis Google Apps Script avec gestion poussée des redirections"""
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    }
     try:
-        # allow_redirects=True est vital pour suivre la redirection Google
-        r = requests.get(GOOGLE_SCRIPT_URL, allow_redirects=True, timeout=15)
-        if r.status_code == 200:
-            image = Image.open(io.BytesIO(r.content))
+        # Envoie de la requête avec User-Agent et suivi des redirections
+        response = requests.get(GOOGLE_SCRIPT_URL, headers=headers, allow_redirects=True, timeout=20)
+        
+        print(f"Statut HTTP Google: {response.status_code}")
+        print(f"Type de contenu reçu: {response.headers.get('Content-Type')}")
+
+        if response.status_code == 200:
+            # Vérification si le contenu est bien une image
+            image = Image.open(io.BytesIO(response.content))
+            print("Graphique téléchargé et converti en image avec succès !")
             return image
+        else:
+            print(f"Échec de la requête, code HTTP : {response.status_code}")
     except Exception as e:
-        print(f"Erreur Téléchargement Graphique: {e}")
+        print(f"Erreur lors de la récupération du graphique: {e}")
     return None
 
 def build_dashboard():
