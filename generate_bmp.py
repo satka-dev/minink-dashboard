@@ -63,7 +63,7 @@ def build_dashboard():
         font_title = font_text = ImageFont.load_default()
 
     # --- ENTÊTE ---
-    draw.text((20, 20), "TABLEAU DE BORD MININK", fill=0, font=font_title)
+    draw.text((20, 20), "TABLEAU DE BORD MININK1", fill=0, font=font_title)
     draw.line([(20, 50), (WIDTH - 20, 50)], fill=0, width=2)
 
     # --- MÉTÉO ---
