@@ -41,7 +41,8 @@ def fetch_google_chart():
 
         if response.status_code == 200:
             # Vérification si le contenu est bien une image
-            image = Image.open(io.BytesIO(response.content))
+            image_bytes = base64.b64decode(response.text)   # Décode le texte Base64 en vrais octets image
+            image = Image.open(io.BytesIO(image_bytes))            
             print("Graphique téléchargé et converti en image avec succès !")
             return image
         else:
