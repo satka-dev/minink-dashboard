@@ -31,7 +31,5 @@ jobs:
     - name: Déploiement sur GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-    - name: Envoyer sur la liseuse Crosspoint
-      run: | curl -X POST -F "file=@dist/sleep.bmp" http://crosspoint.local/upload
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
