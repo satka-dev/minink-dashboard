@@ -94,6 +94,10 @@ def build_dashboard():
         
         # Superposition du graphique au milieu
         img.paste(chart_resized, (20, 110))
+        print("Graphique incrusté sur le tableau de bord avec succès !")
+    else:
+        print("ATTENTION : Aucun graphique à incruster.")
+        
 
     # --- CONVERSION BMP 1-BIT OU 16 NIVEAUX DE GRIS ---
     # Conversion en noir & blanc tramé (1-bit Dithered) pour e-Ink natif
