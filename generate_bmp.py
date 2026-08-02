@@ -41,6 +41,13 @@ def fetch_google_chart():
         print(f"Type de contenu reçu: {response.headers.get('Content-Type')}")
 
         if response.status_code == 200:
+            # --- IMPRIMER LES 100 PREMIERS CARACTÈRES DU TEXTE REÇU ---
+            print(f"Contenu brut reçu de Google : {raw_text[:100]}")
+
+            if raw_text.startswith("ERROR") or raw_text.startswith("<"):
+                print("Google Apps Script a renvoyé un message d'erreur au lieu d'une image.")
+                return None
+                
             # Vérification si le contenu est bien une image
             image_bytes = base64.b64decode(response.text)   # Décode le texte Base64 en vrais octets image
             image = Image.open(io.BytesIO(image_bytes))            
