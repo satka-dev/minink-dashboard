@@ -41,6 +41,9 @@ def fetch_google_chart():
         print(f"Type de contenu reçu: {response.headers.get('Content-Type')}")
 
         if response.status_code == 200:
+            # Definition explicite de raw_text
+            raw_text = response.text.strip()
+            
             # --- IMPRIMER LES 100 PREMIERS CARACTÈRES DU TEXTE REÇU ---
             print(f"Contenu brut reçu de Google : {raw_text[:100]}")
 
@@ -49,7 +52,7 @@ def fetch_google_chart():
                 return None
                 
             # Vérification si le contenu est bien une image
-            image_bytes = base64.b64decode(response.text)   # Décode le texte Base64 en vrais octets image
+            image_bytes = base64.b64decode(raw_text)   # Décode le texte Base64 en vrais octets image
             image = Image.open(io.BytesIO(image_bytes))            
             print("Graphique téléchargé et converti en image avec succès !")
             return image
