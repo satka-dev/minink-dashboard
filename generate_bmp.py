@@ -3,6 +3,7 @@ import io
 import base64
 import requests
 from PIL import Image, ImageDraw, ImageFont
+import time
 
 # ==========================================
 # CONFIGURATION
@@ -35,8 +36,9 @@ def fetch_google_chart():
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     }
     try:
+        url_with_cache_buster = f"{GOOGLE_SCRIPT_URL}?t={int(time.time())}"
         # Envoie de la requête avec User-Agent et suivi des redirections
-        response = requests.get(GOOGLE_SCRIPT_URL, headers=headers, allow_redirects=True, timeout=20)
+        response = requests.get(url_with_cache_buster, headers=headers, allow_redirects=True, timeout=20)
         
         print(f"Statut HTTP Google: {response.status_code}")
         print(f"Type de contenu reçu: {response.headers.get('Content-Type')}")
