@@ -8,7 +8,8 @@ from PIL import Image, ImageDraw, ImageFont
 # CONFIGURATION
 # ==========================================
 # 1. Remplacez par l'URL de votre Web App Google Apps Script
-GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzWB_Vpb7CdvCrqTOB5vQ6-ZlY-Yvnqq4riN2nLj22-v7Q2hm0rlGgY9XRoeRB6dso/exec"
+#GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzWB_Vpb7CdvCrqTOB5vQ6-ZlY-Yvnqq4riN2nLj22-v7Q2hm0rlGgY9XRoeRB6dso/exec"
+GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz5IqeRsgwslkQSL_zEQLQ2TrsVmzhV__Fm-4xx3GCtyoW9XKdbDJyy5nE5CHFNujIN/exec"
 
 # 2. Dimensions de l'écran du Minink / X4 (Ajuster selon résolution exacte, ex: 480x800)
 WIDTH = 480
